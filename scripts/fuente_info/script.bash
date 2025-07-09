@@ -1,0 +1,24 @@
+#!/bin/bash
+
+#SBATCH --chdir=./ # Working directory
+
+#SBATCH --job-name=tutorial # Job name
+#SBATCH --mail-type=START,FAIL,END         # Mail notification
+#SBATCH --mail-user=afpuertav@eafit.edu.co  # User Email
+#SBATCH --output=slurm-serial.%j.out # Stdout (%j expands to jobId)
+#SBATCH --error=slurm-serial.%j.err  # Stderr (%j expands to jobId)
+#SBATCH --ntasks=1                   # Number of tasks (processes)
+#SBATCH --partition=learning        # Partition
+#SBATCH --cpus-per-task=8            # Number of CPU cores per task
+#SBATCH --mem=32G                   # Memory per node             # Number of GPUs
+#SBATCH --time=12:00:00
+
+##### ENVIRONMENT CREATION #####
+module load python/3.10_miniconda-23.5.2
+
+##### JOB COMMANDS #### 
+pip install --upgrade pip
+pip install pandas xlrd
+
+# Ejecutar el script de Python
+python /home/afpuertav/mySpace/codigos/fuente_info/fuente_info.py

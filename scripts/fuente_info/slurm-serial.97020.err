@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/afpuertav/mySpace/codigos/fuente_info/fuente_info.py", line 24, in <module>
+    df.to_csv(output_path, index=False)
+  File "/home/afpuertav/.local/lib/python3.10/site-packages/pandas/util/_decorators.py", line 333, in wrapper
+    return func(*args, **kwargs)
+  File "/home/afpuertav/.local/lib/python3.10/site-packages/pandas/core/generic.py", line 2417, in to_excel
+    formatter.write(
+  File "/home/afpuertav/.local/lib/python3.10/site-packages/pandas/io/formats/excel.py", line 931, in write
+    raise ValueError(
+ValueError: This sheet is too large! Your sheet size is: 1442056, 23 Max sheet size is: 1048576, 16384
