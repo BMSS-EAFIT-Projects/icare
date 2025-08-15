@@ -1,0 +1,28 @@
+#!/bin/bash
+
+#SBATCH --chdir=./ # Working directory
+
+#SBATCH --job-name=TOPIC-MODELLING # Job name
+#SBATCH --mail-type=START,FAIL,END         # Mail notification
+#SBATCH --mail-user=afpuertav@eafit.edu.co  # User Email
+#SBATCH --output=slurm-serial.%j.out # Stdout (%j expands to jobId)
+#SBATCH --error=slurm-serial.%j.err  # Stderr (%j expands to jobId)
+#SBATCH --ntasks=1                   # Number of tasks (processes)
+#SBATCH --partition=accel-2        # Partition
+#SBATCH --gres=gpu:1                # Number of GPUs per node
+#SBATCH --cpus-per-task=8            # Number of CPU cores per task
+#SBATCH --mem=32G                   # Memory per node             # Number of GPUs
+#SBATCH --time=7-00:00:00
+
+##### ENVIRONMENT CREATION #####
+module load python/3.10_miniconda-23.5.2
+
+##### JOB COMMANDS #### 
+pip install --upgrade pip
+pip install pandas bertopic sentence-transformers umap-learn hdbscan plotly pandas openpyxl tqdm
+pip install bertopic[visualization] sentence-transformers umap-learn pandas openpyxl matplotlib
+python -m spacy download es_core_news_md
+
+
+# Ejecutar el script de Python
+python /home/afpuertav/mySpace/scripts/topic_modelling/topic_modellingcopy.py

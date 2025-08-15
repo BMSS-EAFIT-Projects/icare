@@ -1,0 +1,5 @@
+WARNING: bertopic 0.17.3 does not provide the extra 'visualization'
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/afpuertav/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+2025-07-25 19:27:31,164 - BERTopic - WARNING: When you use `pickle` to save/load a BERTopic model,please make sure that the environments in which you saveand load the model are **exactly** the same. The version of BERTopic,its dependencies, and python need to remain the same.

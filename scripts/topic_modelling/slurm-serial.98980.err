@@ -1,0 +1,12 @@
+WARNING: bertopic 0.17.3 does not provide the extra 'visualization'
+[nltk_data] Downloading package stopwords to
+[nltk_data]     /home/afpuertav/nltk_data...
+[nltk_data]   Unzipping corpora/stopwords.zip.
+Traceback (most recent call last):
+  File "/home/afpuertav/mySpace/scripts/topic_modelling/topic_modellingcopy.py", line 24, in <module>
+    nlp = spacy.load("es_core_news_md")
+  File "/home/afpuertav/.local/lib/python3.10/site-packages/spacy/__init__.py", line 52, in load
+    return util.load_model(
+  File "/home/afpuertav/.local/lib/python3.10/site-packages/spacy/util.py", line 484, in load_model
+    raise IOError(Errors.E050.format(name=name))
+OSError: [E050] Can't find model 'es_core_news_md'. It doesn't seem to be a Python package or a valid path to a data directory.
