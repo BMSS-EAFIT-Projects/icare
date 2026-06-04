@@ -1,0 +1,12 @@
+lucha enfermedades
+control enfermedades
+vacunacion
+vacuna
+inmunizacion
+erradicacion enfermedades
+tratamiento medico
+diagnostico temprano
+campana salud publica
+resistencia antimicrobiana
+antibioticos
+medicamento farmaco
