@@ -1,0 +1,218 @@
+/*-- scss:defaults --*/
+// ===== Paleta exacta de "NLP en la práctica · PyCon Colombia 2026" =====
+$violet:        #614AD3;   // primario (kickers, tarjetas violeta, chips)
+$violet-deep:   #3F2F9E;   // fondos oscuros y tarjeta profunda
+$violet-deeper: #281C66;   // chips de autor y círculos oscuros
+$violet-soft:   #8E7EE6;   // círculos decorativos / acento medio
+$ink:           #1A1633;   // títulos y texto
+$gold:          #FFC24B;   // acento (números de sección, viñetas, títulos en tarjetas oscuras)
+$pink:          #FF5C8A;   // acento 3
+$lav-text:      #B6BDF0;   // texto claro sobre fondo oscuro
+$lav-icon:      #DADCF7;   // fondo de íconos cuadrados en tarjetas claras
+$gray:          #6B6B7B;   // texto atenuado / pie de página / leyendas
+$paper:         #F2F3FD;   // fondo de diapositivas de contenido
+
+// ===== Tipografía (el pptx usa Aptos; caemos a Segoe UI / system) =====
+$font-family-sans-serif: "Aptos", "Aptos Display", "Segoe UI", system-ui, "Inter", Roboto, "Helvetica Neue", Arial, sans-serif;
+$presentation-font-size-root: 20px;
+$presentation-heading-font: $font-family-sans-serif;
+$presentation-heading-color: $ink;
+$presentation-heading-font-weight: 800;
+$presentation-slide-text-align: left;
+
+$body-bg: $paper;
+$body-color: $ink;
+$link-color: $violet;
+
+/*-- scss:rules --*/
+:root{
+  --violet:#{$violet}; --violet-deep:#{$violet-deep}; --violet-deeper:#{$violet-deeper};
+  --violet-soft:#{$violet-soft}; --ink:#{$ink}; --gold:#{$gold}; --pink:#{$pink};
+  --lav-text:#{$lav-text}; --lav-icon:#{$lav-icon}; --gray:#{$gray}; --paper:#{$paper};
+}
+
+/* ===== Lienzo ===== */
+.reveal-viewport{ background:var(--paper); }
+.reveal{ color:var(--ink); font-weight:400; }
+.reveal .slides{ text-align:left; }
+.reveal .slides > section,
+.reveal .slides > section > section{
+  box-sizing:border-box; padding:38px 58px 46px 58px; top:0 !important; height:720px;
+}
+
+/* ===== Kicker + título de contenido ===== */
+section[data-kicker]::before{
+  content:attr(data-kicker); display:block;
+  color:var(--violet); font-weight:800; font-size:14px;
+  letter-spacing:.11em; text-transform:uppercase; margin:0 0 7px 2px;
+}
+.reveal h2{
+  color:var(--ink); font-weight:800; letter-spacing:-.01em; text-transform:none;
+  font-size:33px; line-height:1.08; margin:0 0 16px 0; border:0;
+}
+/* Quarto aplica estas clases a la SECCIÓN, no al h2 */
+.reveal section.t28 h2{ font-size:28px; } .reveal section.t26 h2{ font-size:26px; }
+.reveal section.t24 h2{ font-size:24px; }
+.reveal h3{ color:var(--violet); font-weight:800; font-size:19px; margin:0 0 .3em; line-height:1.12; }
+.reveal p{ margin:.35em 0; line-height:1.34; font-size:17px; }
+.reveal strong{ font-weight:800; }
+
+/* ===== Pie de marca + número (sólo en diapositivas de contenido) ===== */
+.reveal .footer{ left:58px; right:auto; bottom:14px; text-align:left;
+  color:var(--gray); font-size:11.5px; font-weight:600; }
+.reveal .slide-number{ background:transparent; color:var(--gray); font-size:12px; font-weight:600;
+  right:20px; bottom:12px; }
+/* Ocultar pie/numero en diapositivas oscuras (reveal aplica data-state al <html>) */
+html.dark .footer, html.dark .slide-number,
+body.dark .footer, body.dark .slide-number,
+.reveal.dark .footer, .reveal.dark .slide-number{ display:none !important; }
+
+/* ===== Tarjetas ===== */
+.card,.card-violet,.card-deep{ border-radius:15px; padding:20px 24px; box-sizing:border-box; }
+.card{ background:#fff; box-shadow:0 7px 22px rgba(40,28,102,.10); }
+.card-violet{ background:var(--violet); color:#fff; box-shadow:0 7px 22px rgba(40,28,102,.18); }
+.card-deep{ background:var(--violet-deep); color:#fff; box-shadow:0 7px 22px rgba(40,28,102,.20); }
+.card h3{ color:var(--violet); } .card-pink-h h3{ color:var(--pink); }
+.card-violet h3,.card-deep h3,.card-violet .h,.card-deep .h{ color:var(--gold); font-weight:800; }
+.card-violet p,.card-deep p{ color:#fff; }
+.card-violet .soft,.card-deep .soft{ color:var(--lav-text); }
+.fill{ height:100%; }
+.reveal .card p,.reveal .card-violet p,.reveal .card-deep p{ font-size:16px; }
+
+/* ===== Columnas (Quarto .columns) con separación ===== */
+.reveal .columns{ display:flex; gap:22px; align-items:stretch; }
+.reveal .columns > .column{ display:flex; flex-direction:column; }
+
+/* ===== Layout util ===== */
+.grid2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; }
+.grid3{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:18px; }
+.stack{ display:flex; flex-direction:column; gap:12px; }
+.center{ text-align:center; }
+.muted{ color:var(--gray); }
+.cap{ color:var(--gray); font-size:12.5px; text-align:center; margin-top:8px; }
+.accent{ color:var(--pink); font-weight:800; }
+.gold{ color:var(--gold); } .vio{ color:var(--violet); font-weight:800; }
+
+/* ===== Íconos cuadrados (tarjetas claras) ===== */
+.isq{ width:40px; height:40px; border-radius:11px; background:var(--lav-icon);
+  display:inline-flex; align-items:center; justify-content:center; font-size:19px; flex:0 0 auto; }
+.iconrow{ display:flex; gap:14px; align-items:center; margin:.55em 0; }
+.iconrow p{ margin:0; }
+
+/* ===== Viñetas con punto dorado ===== */
+.golddot{ list-style:none; margin:.2em 0 0; padding:0; }
+.golddot li{ position:relative; padding:0 0 0 22px; margin:.5em 0; font-size:16px; line-height:1.3; }
+.golddot li::before{ content:""; position:absolute; left:0; top:.42em; width:11px; height:11px;
+  border-radius:50%; background:var(--gold); }
+.card-violet .golddot li,.card-deep .golddot li{ color:#fff; }
+
+/* ===== Pills / chips ===== */
+.pill{ display:inline-block; background:var(--gold); color:var(--ink); font-weight:800;
+  font-size:12px; letter-spacing:.08em; text-transform:uppercase; padding:.4em 1em; border-radius:999px; }
+.who{ display:inline-block; background:var(--lav-text); color:var(--violet-deep); font-weight:800;
+  font-size:11px; letter-spacing:.06em; text-transform:uppercase; padding:.35em .8em; border-radius:999px; }
+.authorchip{ background:var(--violet-deeper); border:1px solid rgba(255,255,255,.14);
+  border-radius:10px; padding:9px 16px; }
+.authorchip b{ color:#fff; font-size:14px; display:block; }
+.authorchip span{ color:var(--lav-text); font-size:10.5px; }
+.namechip{ display:inline-block; background:var(--violet-deeper); border:1px solid rgba(255,255,255,.25);
+  color:#fff; font-weight:700; font-size:14px; padding:.42em 1.15em; border-radius:10px; }
+
+/* ===== Word chips (¿qué es una palabra?) ===== */
+.wordrow{ display:flex; gap:14px; }
+.wordchip{ flex:1; text-align:center; background:#fff; border-radius:13px; padding:26px 8px;
+  font-size:23px; font-weight:800; color:var(--ink); box-shadow:0 7px 22px rgba(40,28,102,.10); }
+.wordchip.v{ background:var(--violet); color:#fff; }
+
+/* ===== Tokens ===== */
+.tok{ display:inline-block; background:var(--lav-icon); color:var(--violet-deep);
+  padding:.28em .8em; border-radius:8px; margin:.16em 0; font-weight:700; font-size:14px; }
+.arrow{ color:var(--gray); font-size:17px; padding:0 6px; }
+.pinkbox{ display:flex; align-items:center; justify-content:center; background:var(--pink); color:#fff;
+  font-weight:800; font-size:18px; letter-spacing:.02em; border-radius:12px; padding:16px 26px; }
+.obox{ border:2px solid var(--violet); background:#F3F1FD; color:var(--violet); font-weight:800;
+  font-size:24px; border-radius:12px; padding:22px; text-align:center; }
+
+/* ===== Sidebar del pipeline (Herramientas NLP) ===== */
+.side{ background:#fff; border-radius:15px; padding:18px 16px; box-shadow:0 7px 22px rgba(40,28,102,.10); }
+.side h4{ color:var(--ink); font-weight:800; font-size:18px; margin:.2em 0 1em .3em; }
+.side-item{ color:var(--gray); font-size:13.5px; font-weight:600; padding:11px 14px; border-radius:9px; margin:.35em 0; }
+.side-item.active{ background:var(--violet); color:#fff; font-weight:800; }
+
+/* ===== Números de pasos (RAG, BERTopic) ===== */
+.numrow{ display:flex; gap:12px; align-items:flex-start; margin:.35em 0; }
+.num{ flex:0 0 auto; width:31px; height:31px; border-radius:50%; background:var(--violet); color:#fff;
+  font-weight:800; font-size:15px; display:flex; align-items:center; justify-content:center; }
+.card-violet .num,.card-deep .num{ background:var(--gold); color:var(--violet-deep); }
+.numrow b{ font-size:14.5px; } .numrow .d{ color:var(--gray); font-size:12.5px; }
+.card-violet .numrow .d,.card-deep .numrow .d{ color:var(--lav-text); }
+
+/* ===== Tabla término-documento ===== */
+.tdm{ border-collapse:separate; border-spacing:5px; font-size:13px; }
+.tdm th{ background:var(--violet); color:#fff; font-weight:800; border-radius:7px; padding:7px 12px; text-align:center; }
+.tdm td{ background:#EEF0FB; border-radius:7px; padding:7px 12px; text-align:center; color:var(--ink); }
+.tdm td.k{ background:#fff; font-weight:800; text-align:left; }
+
+/* ===== Timeline / proceso (zig-zag) ===== */
+.flow{ position:relative; margin-top:14px; }
+.flow .line{ position:absolute; left:2%; right:2%; top:187px; height:3px; background:var(--violet-soft); opacity:.55; }
+.flow .row{ display:flex; gap:14px; align-items:flex-start; }
+.tlcard{ flex:1; background:#fff; border-radius:12px; padding:13px 15px; box-shadow:0 6px 18px rgba(40,28,102,.10); min-height:118px; }
+.tlcard.v{ background:var(--violet); } .tlcard.v .dt{ color:var(--gold);} .tlcard.v .tt{ color:#fff;} .tlcard.v .ds{ color:var(--lav-text);}
+.tlcard .dt{ color:var(--violet); font-weight:800; font-size:13px; }
+.tlcard .tt{ color:var(--ink); font-weight:800; font-size:14px; margin:.2em 0; line-height:1.1; }
+.tlcard .ds{ color:var(--gray); font-size:11.5px; line-height:1.25; }
+.flow .row.down{ margin-top:26px; }
+.dot{ width:15px; height:15px; border-radius:50%; background:var(--violet); border:3px solid var(--paper); }
+
+/* proceso numerado (ruta metodológica) */
+.pnode{ flex:1; text-align:center; }
+.pcirc{ width:44px; height:44px; border-radius:50%; background:var(--violet); color:#fff; font-weight:800;
+  font-size:19px; display:flex; align-items:center; justify-content:center; margin:0 auto 8px; box-shadow:0 4px 12px rgba(40,28,102,.22); }
+.pnode .pt{ font-weight:800; font-size:13px; color:var(--ink); }
+
+/* ===== Diapositivas oscuras (portada, dividers, idea fuerza, cierre) ===== */
+section.dark{ overflow:hidden; }
+section.dark, section.dark h1, section.dark h2, section.dark h3, section.dark p{ color:#fff; }
+section.dark .z{ position:relative; z-index:2; }
+.circle{ position:absolute; border-radius:50%; z-index:0; }
+.divnum{ font-size:150px; font-weight:900; color:var(--gold); line-height:.86; margin:0; }
+.dark .lead{ font-weight:800; }
+.dark .kick{ font-size:11px; letter-spacing:.1em; }
+
+/* ===== Portada ===== */
+#hero .title{ font-size:52px; font-weight:900; color:#fff; line-height:1.02; margin:.1em 0 .18em; }
+#hero .sub{ font-size:25px; color:var(--gold); font-weight:600; }
+#hero .desc{ font-size:15px; color:var(--lav-text); margin-top:.4em; }
+
+/* imágenes */
+.reveal .imgcard img{ border-radius:10px; display:block; }
+.reveal img{ margin:0; }
+.reveal figure{ margin:0; }
+.imgcard{ display:flex; flex-direction:column; align-items:center; justify-content:center; }
+
+/* h2 vacío (diapositivas oscuras) */
+.reveal h2:empty{ display:none; margin:0; }
+
+/* subtítulo dentro de tarjeta */
+.card .h,.h{ color:var(--violet); font-weight:800; font-size:15px; margin:.65em 0 .2em; display:block; }
+.card .h:first-child{ margin-top:0; }
+
+/* círculo de ícono (rompehielos) */
+.cico{ width:34px; height:34px; border-radius:50%; display:inline-flex; align-items:center;
+  justify-content:center; font-size:15px; color:#fff; flex:0 0 auto; }
+
+/* timeline / proceso zig-zag (2 filas + línea) */
+.flow2{ position:relative; }
+.frow{ display:grid; grid-template-columns:repeat(5,1fr); gap:14px; align-items:start; }
+.fline{ position:relative; height:3px; background:var(--violet-soft); opacity:.6; margin:0 3% 0 3%; }
+.fline .d{ position:absolute; top:50%; width:15px; height:15px; border-radius:50%; background:var(--violet);
+  border:3px solid var(--paper); transform:translate(-50%,-50%); }
+.pcirc.gold{ background:var(--gold); color:var(--violet-deep); }
+
+/* tarjetas blancas dentro de diapositivas oscuras (cierre) */
+section.dark .card{ color:var(--ink); }
+section.dark .card p{ color:var(--ink); }
+section.dark .card .cap{ color:var(--gray); }
+section.dark .card .h{ color:var(--violet); }
+code{ font-family:"Consolas","SF Mono","Menlo",monospace; color:var(--violet-deep); }

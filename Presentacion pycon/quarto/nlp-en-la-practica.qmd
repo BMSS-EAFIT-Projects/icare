@@ -1,0 +1,673 @@
+---
+lang: es
+format:
+  revealjs:
+    theme: [default, theme-nlp.scss]
+    width: 1280
+    height: 720
+    margin: 0
+    min-scale: 0.2
+    max-scale: 2.0
+    slide-number: c
+    progress: true
+    controls: true
+    transition: fade
+    center: false
+    footer: "NLP en la práctica · PyCon Colombia 2026"
+---
+
+<!-- ============ 1 · PORTADA ============ -->
+## {.dark data-state="dark" data-menu-title="Portada" background-color="#3F2F9E"}
+
+<div class="circle" style="width:560px;height:560px;background:#8E7EE6;top:-190px;right:-140px;"></div>
+<div class="circle" style="width:520px;height:520px;background:#281C66;bottom:-250px;left:-170px;"></div>
+
+::: {.z #hero}
+<span class="pill">PyCon Colombia 2026</span>
+<div class="title">NLP en la práctica</div>
+<div class="sub">De la lingüística de corpus a RAG con Python</div>
+<div class="desc">Taller de procesamiento de lenguaje natural en español, con un caso aplicado en salud.</div>
+
+<div style="display:flex;gap:14px;margin-top:34px;">
+<div class="authorchip"><b>Biviana Suárez</b><span>Universidad EAFIT</span></div>
+<div class="authorchip"><b>Dora Alzate</b><span>Universidad EAFIT</span></div>
+<div class="authorchip"><b>Karen Gómez</b><span>Universidad EAFIT</span></div>
+<div class="authorchip"><b>Andrés Puerta</b><span>Universidad EAFIT</span></div>
+</div>
+
+<div class="desc" style="margin-top:30px;">Taller · Medellín, 26 julio 2026</div>
+:::
+
+<!-- ============ 2 · DIVIDER 01 ============ -->
+## {.dark data-state="dark" data-menu-title="01 · Introducción participativa" background-color="#3F2F9E"}
+
+<div class="circle" style="width:430px;height:430px;background:#8E7EE6;bottom:-170px;left:-120px;"></div>
+<div class="circle" style="width:300px;height:300px;background:#8E7EE6;opacity:.55;top:-120px;right:-70px;"></div>
+
+::: {.z}
+<div class="divnum">01</div>
+<div style="font-size:36px;font-weight:800;color:#fff;margin-top:70px;max-width:900px;">Introducción participativa</div>
+<div style="margin-top:20px;"><span class="pill">Biviana</span></div>
+:::
+
+<!-- ============ 3 · OBJETIVO ============ -->
+## Objetivo del workshop {data-kicker="Objetivo del workshop · Biviana"}
+
+<div class="columns" style="height:452px;">
+<div class="column" style="flex:0 0 61%;">
+<div class="card fill">
+<p style="font-size:18px;">Convertir texto en datos analizables usando Python y mostrar cómo una metodología de NLP puede adaptarse a distintos dominios:</p>
+<div class="iconrow"><span class="isq">📰</span><p>Columnas de opinión en medios colombianos.</p></div>
+<div class="iconrow"><span class="isq">🇪🇸</span><p>Corpus en español con desafíos lingüísticos propios.</p></div>
+<div class="iconrow"><span class="isq">🩺</span><p>Aplicaciones en salud y análisis de publicaciones tipo Twitter/X.</p></div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;flex-direction:column;justify-content:center;">
+<h3>La idea central</h3>
+<p style="font-size:19px;">No venimos a mostrar un notebook: venimos a mostrar cómo se construye una metodología interdisciplinaria.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 4 · RUTA ============ -->
+## Ruta de dos horas {data-kicker="Ruta de dos horas · Biviana"}
+
+<div class="stack" style="gap:10px;margin-top:2px;">
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">Introducción participativa</b><span class="who">Biviana</span></div>
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">¿Qué debe saber un científico de datos sobre lenguaje?</b><span class="who">Dora</span></div>
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">Pipeline NLP: del lenguaje a los datos</b><span class="who">Karen</span></div>
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">Caso de uso: tweets y aplicación en salud</b><span class="who">Andrés</span></div>
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">Práctica guiada en Python</b><span class="who">Equipo</span></div>
+<div class="card" style="display:flex;align-items:center;justify-content:space-between;padding:15px 22px;"><b style="font-size:16px;">Cierre y conversación final</b><span class="who">Biviana</span></div>
+</div>
+
+<!-- ============ 5 · ANTES DE PROGRAMAR ============ -->
+## Antes de programar: leer el problema {data-kicker="Introducción participativa · Biviana" .t28}
+
+<div class="card-deep" style="margin-bottom:16px;">
+<p style="font-size:20px;font-weight:800;color:#fff;">Si les entregáramos 100.000 textos sobre política, ciencia, salud o cultura, ¿qué preguntas podrían responder con Python?</p>
+</div>
+
+<div class="columns" style="height:300px;">
+<div class="column" style="flex:0 0 61%;">
+<div class="card fill">
+<h3>Preguntas posibles</h3>
+<ul class="golddot">
+<li>¿De qué se habla?</li>
+<li>¿Quiénes aparecen?</li>
+<li>¿Cómo cambia el discurso en el tiempo?</li>
+<li>¿Qué emociones o posturas circulan?</li>
+</ul>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;flex-direction:column;justify-content:center;">
+<h3>El desafío</h3>
+<p>El lenguaje humano es información no estructurada. Python nos ayuda a convertirlo en datos, pero necesitamos saber qué estamos transformando.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 6 · TRES TEXTOS ============ -->
+## Tres textos, un mismo tema {data-kicker="Rompehielos · Biviana"}
+
+<div class="grid3" style="height:322px;">
+<div class="card"><div style="display:flex;gap:10px;align-items:center;"><span class="cico" style="background:#614AD3;">📱</span><b style="color:#614AD3;font-size:14px;">Tuit político ficticio</b></div>
+<p style="font-style:italic;font-size:13px;margin-top:12px;">"Necesitamos una reforma tributaria justa que reduzca la desigualdad y fortalezca la inversión social. El país no puede seguir cargando el peso sobre las mismas familias. #Colombia"</p></div>
+<div class="card"><div style="display:flex;gap:10px;align-items:center;"><span class="cico" style="background:#8E7EE6;">📰</span><b style="color:#8E7EE6;font-size:14px;">Titular periodístico ficticio</b></div>
+<p style="font-style:italic;font-size:13px;margin-top:12px;">"Gobierno presenta nuevo proyecto de reforma tributaria ante el Congreso."</p></div>
+<div class="card"><div style="display:flex;gap:10px;align-items:center;"><span class="cico" style="background:#FF5C8A;">💬</span><b style="color:#FF5C8A;font-size:14px;">Comentario ciudadano ficticio</b></div>
+<p style="font-style:italic;font-size:13px;margin-top:12px;">"Otra reforma más. Siempre prometen cambios y al final nada mejora."</p></div>
+</div>
+
+<div class="card-deep" style="margin-top:16px;">
+<p style="font-size:14px;"><b class="gold">Como humanos notamos:</b> tema común, actores políticos, tono emocional, posición o valoración, palabras clave. Para un computador solo hay cadenas de texto: el reto es construir una representación útil.</p>
+</div>
+
+<!-- ============ 7 · IDEA FUERZA · BIVIANA ============ -->
+## {.dark data-state="dark" data-menu-title="Idea fuerza · Biviana" background-color="#3F2F9E"}
+
+<div class="circle" style="width:520px;height:520px;background:#8E7EE6;top:-170px;right:-130px;"></div>
+
+::: {.z}
+<span class="pill">Idea fuerza · Biviana</span>
+<p class="lead" style="font-size:32px;color:#fff;margin-top:30px;max-width:1050px;">Python no solo permite analizar números.</p>
+<p style="font-size:25px;color:#FFC24B;max-width:1080px;">También permite estudiar cómo una sociedad argumenta, discute, nombra problemas y construye sentido a través del lenguaje.</p>
+:::
+
+<!-- ============ 8 · DIVIDER 02 ============ -->
+## {.dark data-state="dark" data-menu-title="02 · Lenguaje" background-color="#3F2F9E"}
+
+<div class="circle" style="width:430px;height:430px;background:#8E7EE6;bottom:-170px;left:-120px;"></div>
+<div class="circle" style="width:300px;height:300px;background:#8E7EE6;opacity:.55;top:-120px;right:-70px;"></div>
+
+::: {.z}
+<div class="divnum">02</div>
+<div style="font-size:34px;font-weight:800;color:#fff;margin-top:64px;max-width:1050px;">¿Qué debe saber un científico de datos sobre lenguaje?</div>
+<div style="margin-top:20px;"><span class="pill">Dora</span></div>
+:::
+
+<!-- ============ 9 · ORIGEN DEL PNL ============ -->
+## El origen del procesamiento del lenguaje natural (PNL) {data-kicker="Contexto histórico · Dora" .t26}
+
+<div class="columns" style="height:430px;">
+<div class="column" style="flex:0 0 41%;">
+<div class="card fill imgcard"><img src="img_nlp/slide09_img0.jpg" style="max-height:376px;max-width:100%;"/></div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;align-items:center;">
+<p style="font-size:22px;">El PNL no nació propiamente del amor por la lingüística, sino como respuesta a desafíos tecnológicos y de inteligencia durante la Guerra Fría.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 10 · TIMELINE ============ -->
+## El origen del PNL {data-kicker="Contexto histórico · Dora"}
+
+<div class="flow2" style="margin-top:16px;">
+<div class="frow">
+<div class="tlcard"><div class="dt">1949–1965</div><div class="tt">Los inicios</div><div class="ds">Traducción automática y primeros experimentos.</div></div>
+<div></div>
+<div class="tlcard v"><div class="dt">1966</div><div class="tt">ELIZA</div><div class="ds">Primer sistema conversacional (Weizenbaum).</div></div>
+<div></div>
+<div class="tlcard"><div class="dt">1990s</div><div class="tt">Sociedad de la información</div><div class="ds">World Wide Web (WWW).</div></div>
+</div>
+<div class="fline" style="margin:20px 3%;"><span class="d" style="left:10%"></span><span class="d" style="left:30%"></span><span class="d" style="left:50%"></span><span class="d" style="left:70%"></span><span class="d" style="left:90%"></span></div>
+<div class="frow">
+<div></div>
+<div class="tlcard"><div class="dt">1950–1965</div><div class="tt">La teoría lingüística y PLN</div><div class="ds">Chomsky y los formalistas.</div></div>
+<div></div>
+<div class="tlcard"><div class="dt">1980–1990</div><div class="tt">Modelos lingüísticos</div><div class="ds">Teorías lingüísticas para el PLN. Computadores personales (IBM).</div></div>
+<div></div>
+</div>
+</div>
+
+<!-- ============ 11 · ERA DE DATOS MASIVOS ============ -->
+## La Era de los datos masivos {data-kicker="Contexto histórico · Dora"}
+
+<div class="card-violet" style="height:360px;display:flex;align-items:center;justify-content:center;">
+<p style="font-size:27px;color:#fff;text-align:center;max-width:1000px;">En los años 2000, la potencia de la computación, la cantidad de datos masivos y el aprendizaje profundo cambiaron las reglas de juego.</p>
+</div>
+
+<!-- ============ 12 · ¿QUÉ ES UNA PALABRA? ============ -->
+## ¿Qué es una palabra? {data-kicker="Actividad participativa · Dora"}
+
+<div class="wordrow" style="margin-top:6px;">
+<div class="wordchip">Banco</div>
+<div class="wordchip">Gato</div>
+<div class="wordchip v">Correr</div>
+<div class="wordchip v">Corrí</div>
+<div class="wordchip v">Corriendo</div>
+</div>
+
+<div class="card center" style="margin-top:26px;height:150px;display:flex;align-items:center;justify-content:center;">
+<p style="font-size:26px;font-weight:800;color:#614AD3;">¿Cuántas palabras diferentes ven aquí?</p>
+</div>
+
+<!-- ============ 13 · DOS PERSPECTIVAS ============ -->
+## ¿Qué es una palabra? {data-kicker="Actividad participativa · Dora"}
+
+<div class="grid2" style="height:440px;">
+<div class="card fill imgcard" style="justify-content:flex-start;"><span class="h" style="align-self:flex-start;">La perspectiva del algoritmo</span><img src="img_nlp/slide13_img0.jpg" style="max-height:320px;max-width:100%;margin-top:8px;"/></div>
+<div class="card fill imgcard" style="justify-content:flex-start;"><span class="h" style="align-self:flex-start;color:#FF5C8A;">La perspectiva de la lingüística</span><img src="img_nlp/slide13_img1.png" style="max-height:290px;max-width:100%;margin-top:20px;"/></div>
+</div>
+
+<!-- ============ 14 · TOKENS VS LEMAS ============ -->
+## Tokens vs. lemas {data-kicker="¿Por qué el español puede ser difícil? · Dora"}
+
+<div class="grid2" style="height:440px;">
+<div class="card fill">
+<p style="font-size:16px;"><b class="vio">Un token:</b> forma de cada palabra o carácter como aparecen en el texto plano.</p>
+<p style="font-size:16px;"><b class="accent">Un lema:</b> unidad léxica de referencia (forma de diccionario).</p>
+<div style="display:flex;align-items:center;gap:18px;margin-top:18px;">
+<div class="stack" style="gap:9px;">
+<span class="tok" style="font-size:15px;">correr</span>
+<span class="tok" style="font-size:15px;">corrí</span>
+<span class="tok" style="font-size:15px;">corriendo</span>
+</div>
+<div class="arrow" style="font-size:22px;">→</div>
+<div class="pinkbox" style="min-width:150px;">correr</div>
+</div>
+</div>
+<div class="card fill imgcard" style="justify-content:flex-start;"><span class="h" style="align-self:flex-start;font-size:22px;">correr</span><img src="img_nlp/slide14_img0.png" style="max-height:250px;max-width:100%;margin-top:26px;"/></div>
+</div>
+
+<!-- ============ 15 · AMBIGÜEDAD ============ -->
+## Ambigüedad y homografía {data-kicker="¿Por qué el español puede ser difícil? · Dora"}
+
+<div class="grid2" style="height:300px;">
+<div class="card fill" style="display:flex;align-items:center;justify-content:center;"><div class="obox" style="width:74%;">Banco</div></div>
+<div class="card fill" style="display:flex;align-items:center;justify-content:center;"><div class="obox" style="width:74%;">Gato</div></div>
+</div>
+
+<div class="card-deep center" style="margin-top:16px;"><p style="font-size:20px;font-weight:800;color:#fff;">Sin contexto lingüístico la ambigüedad es total.</p></div>
+
+<!-- ============ 16 · STOPWORDS Y NER ============ -->
+## Stopwords y entidades nombradas {data-kicker="¿Por qué el español suele ser difícil? · Dora"}
+
+<div class="grid2" style="height:400px;">
+<div class="card fill"><span class="h" style="font-size:22px;">Stopwords</span><p style="font-size:17px;margin-top:14px;">Términos de alta frecuencia como <b>"de"</b>, <b>"que"</b>, <b>"la"</b>, <b>"en"</b>, <b>"por"</b>, etc.</p></div>
+<div class="card fill"><span class="h" style="font-size:22px;color:#FF5C8A;">Entidades nombradas (NER)</span><p style="font-size:17px;margin-top:14px;">Personas, lugares, organizaciones, fechas, cantidades.</p></div>
+</div>
+
+<!-- ============ 17 · VARIACIÓN DIALECTAL ============ -->
+## Variación dialectal {data-kicker="¿Por qué el español suele ser difícil? · Dora"}
+
+<div class="columns" style="height:430px;">
+<div class="column" style="flex:0 0 52%;">
+<div class="card fill imgcard"><img src="img_nlp/slide17_img0.jpg" style="max-height:380px;max-width:100%;"/></div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;flex-direction:column;justify-content:center;">
+<h3 style="font-size:22px;">Variación dialectal</h3>
+<p style="font-size:17px;">El mismo idioma cambia entre países y regiones: un modelo entrenado con un solo español tropieza con el resto.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 18 · RUTA METODOLÓGICA ============ -->
+## ¿Qué hacemos para analizar lenguaje desde la ciencia de datos? {data-kicker="Ruta metodológica · Dora" .t24}
+
+<div class="flow2" style="margin-top:34px;">
+<div class="frow">
+<div class="pnode"><div class="pcirc">1</div><div class="pt">Pregunta</div></div>
+<div></div>
+<div class="pnode"><div class="pcirc">3</div><div class="pt">Preprocesado</div></div>
+<div></div>
+<div class="pnode"><div class="pcirc">5</div><div class="pt">Estadística descriptiva</div></div>
+</div>
+<div class="fline" style="margin:26px 3%;"><span class="d" style="left:10%"></span><span class="d" style="left:30%"></span><span class="d" style="left:50%"></span><span class="d" style="left:70%"></span><span class="d" style="left:90%"></span></div>
+<div class="frow">
+<div></div>
+<div class="pnode"><div class="pcirc">2</div><div class="pt">Recolección</div></div>
+<div></div>
+<div class="pnode"><div class="pcirc">4</div><div class="pt">Anotación</div></div>
+<div></div>
+</div>
+</div>
+
+<!-- ============ 19 · IDEA FUERZA · DORA ============ -->
+## {.dark data-state="dark" data-menu-title="Idea fuerza · Dora" background-color="#3F2F9E"}
+
+<div class="circle" style="width:520px;height:520px;background:#8E7EE6;top:-170px;right:-130px;"></div>
+
+::: {.z}
+<span class="pill">Dora</span>
+<p class="lead" style="font-size:38px;color:#fff;margin-top:40px;max-width:1050px;">Las decisiones críticas de PLN ocurren siempre antes del entrenamiento del modelo.</p>
+:::
+
+<!-- ============ 20 · DIVIDER 03 ============ -->
+## {.dark data-state="dark" data-menu-title="03 · Pipeline NLP" background-color="#3F2F9E"}
+
+<div class="circle" style="width:430px;height:430px;background:#8E7EE6;bottom:-170px;left:-120px;"></div>
+<div class="circle" style="width:300px;height:300px;background:#8E7EE6;opacity:.55;top:-120px;right:-70px;"></div>
+
+::: {.z}
+<div class="divnum">03</div>
+<div style="font-size:36px;font-weight:800;color:#fff;margin-top:64px;max-width:1050px;">Pipeline NLP: del lenguaje a los datos</div>
+<div style="margin-top:20px;"><span class="pill">Karen</span></div>
+:::
+
+<!-- ============ 21 · PIPELINE · TEXTO ============ -->
+## {data-menu-title="Pipeline · Texto de entrada"}
+
+<div class="columns" style="height:470px;">
+<div class="column" style="flex:0 0 24%;">
+<div class="side fill"><h4>Herramientas NLP</h4>
+<div class="side-item">Tokenizar</div>
+<div class="side-item">Filtrar Stopwords</div>
+<div class="side-item">Lematizar</div>
+<div class="side-item">Representación vectorial</div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill"><span class="h" style="font-size:18px;">Texto de entrada</span>
+<p style="font-style:italic;font-size:17px;margin-top:12px;line-height:1.5;">"La pandemia y la pospandemia hacen visible la necesidad del conocimiento. De su gestión dependen las estrategias de detección, atención y contención del coronavirus, el desarrollo del talento humano calificado y de los insumos tecnológicos para la prevención de la enfermedad y su tratamiento; sin duda, la calidad de los sistemas de salud se encuentra relacionada con los niveles de desarrollo científico y tecnológico de los países."</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 22 · PIPELINE · TOKENIZAR ============ -->
+## {data-menu-title="Pipeline · Tokenizar"}
+
+<div class="columns" style="height:470px;">
+<div class="column" style="flex:0 0 24%;">
+<div class="side fill"><h4>Herramientas NLP</h4>
+<div class="side-item active">Tokenizar</div>
+<div class="side-item">Filtrar Stopwords</div>
+<div class="side-item">Lematizar</div>
+<div class="side-item">Representación vectorial</div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="stack" style="gap:12px;">
+<div class="card-violet"><span class="h">Nivel palabra</span><p style="font-size:15px;">[La] [pandemia] [y] [la] [pospandemia] [hacen] [visible] [la]</p></div>
+<div class="card"><span class="h">Nivel bigrama</span><p style="font-size:15px;">[La pandemia] [pandemia y] [y la] [la pospandemia] [pospandemia hacen] [hacen visible] [visible la] [la necesidad]</p></div>
+<div class="card"><span class="h">Nivel subpalabra</span><p style="font-size:15px;">[pos] [##pan] [##demia] [hacen] [vis] [##ible] [necesi] [##dad]</p></div>
+</div>
+</div>
+</div>
+
+<!-- ============ 23 · PIPELINE · STOPWORDS ============ -->
+## {data-menu-title="Pipeline · Filtrar stopwords"}
+
+<div class="columns" style="height:470px;">
+<div class="column" style="flex:0 0 24%;">
+<div class="side fill"><h4>Herramientas NLP</h4>
+<div class="side-item">Tokenizar</div>
+<div class="side-item active">Filtrar Stopwords</div>
+<div class="side-item">Lematizar</div>
+<div class="side-item">Representación vectorial</div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill"><span class="h" style="font-size:18px;">Filtrar stopwords</span>
+<p style="font-size:16px;margin-top:12px;line-height:1.55;"><span class="muted">La</span> pandemia <span class="muted">y la</span> pospandemia hacen visible <span class="muted">la</span> necesidad <span class="muted">del</span> conocimiento. <span class="muted">De su</span> gestión dependen <span class="muted">las</span> estrategias <span class="muted">de</span> detección, atención <span class="muted">y</span> contención <span class="muted">del</span> coronavirus, <span class="muted">el</span> desarrollo <span class="muted">del</span> talento humano calificado <span class="muted">y de los</span> insumos tecnológicos <span class="muted">para la</span> prevención <span class="muted">de la</span> enfermedad <span class="muted">y su</span> tratamiento; <span class="muted">sin duda, la</span> calidad <span class="muted">de los</span> sistemas <span class="muted">de</span> salud <span class="muted">se</span> encuentra relacionada <span class="muted">con los</span> niveles <span class="muted">de</span> desarrollo científico <span class="muted">y</span> tecnológico <span class="muted">de los</span> países.</p>
+<p class="cap" style="text-align:left;margin-top:16px;">Las palabras en gris se eliminan por ser muy frecuentes y aportar poca información.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 24 · PIPELINE · LEMATIZAR ============ -->
+## {data-menu-title="Pipeline · Lematizar"}
+
+<div class="columns" style="height:470px;">
+<div class="column" style="flex:0 0 24%;">
+<div class="side fill"><h4>Herramientas NLP</h4>
+<div class="side-item">Tokenizar</div>
+<div class="side-item">Filtrar Stopwords</div>
+<div class="side-item active">Lematizar</div>
+<div class="side-item">Representación vectorial</div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill"><span class="h" style="font-size:18px;">Lematizar</span>
+<p style="font-size:16px;margin-top:12px;line-height:1.55;">el pandemia y el pospandemia hacer visible el necesidad de el conocimiento. de su gestión depender el estrategia de detección, atención y contención de el coronavirus, el desarrollo de el talento humano calificado y de el insumo tecnológico para el prevención de el enfermedad y su tratamiento; sin duda, la calidad de el sistema de salud se encontrar relacionado con el nivel de desarrollo científico y tecnológico de el país.</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 25 · PIPELINE · VECTORES ============ -->
+## {data-menu-title="Pipeline · Representación vectorial"}
+
+<div class="columns" style="height:470px;">
+<div class="column" style="flex:0 0 24%;">
+<div class="side fill"><h4>Herramientas NLP</h4>
+<div class="side-item">Tokenizar</div>
+<div class="side-item">Filtrar Stopwords</div>
+<div class="side-item">Lematizar</div>
+<div class="side-item active">Representación vectorial</div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill" style="justify-content:center;display:flex;flex-direction:column;"><span class="h" style="font-size:18px;">Representación vectorial</span>
+<div style="display:flex;gap:16px;align-items:center;margin:18px 0;">
+<span style="background:#EEF0FB;color:#3F2F9E;font-weight:800;border-radius:9px;padding:12px 16px;min-width:220px;text-align:center;">conocimiento</span>
+<code style="font-size:15px;">[ 0.18, -0.42, 0.07, 0.55, -0.31, 0.12, ..., 0.09 ]</code>
+</div>
+<div style="display:flex;gap:16px;align-items:center;margin:6px 0;">
+<span style="background:#EEF0FB;color:#3F2F9E;font-weight:800;border-radius:9px;padding:12px 16px;min-width:220px;text-align:center;">la calidad de los sistemas de salud</span>
+<code style="font-size:15px;">[ -0.05, 0.33, 0.61, -0.14, 0.27, -0.48, ..., 0.22 ]</code>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ============ 26 · EMBEDDINGS ============ -->
+## Embeddings {data-kicker="Karen"}
+
+<div class="columns" style="height:452px;">
+<div class="column" style="flex:0 0 44%;">
+<div class="card fill"><span class="h" style="font-size:16px;">Matriz término-documento</span>
+<table class="tdm" style="margin-top:12px;width:100%;">
+<tr><th style="background:transparent;"></th><th>Doc 1</th><th>Doc 2</th><th>Doc 3</th></tr>
+<tr><td class="k">pandemia</td><td>2</td><td>0</td><td>1</td></tr>
+<tr><td class="k">necesidad</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td class="k">conocimiento</td><td>0</td><td>2</td><td>3</td></tr>
+<tr><td class="k">…</td><td>…</td><td>…</td><td>…</td></tr>
+<tr><td class="k">palabra n</td><td>…</td><td>…</td><td>…</td></tr>
+</table>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill">
+<span class="h">Embeddings estáticos</span>
+<p style="font-size:14px;">Cada palabra tiene un solo embedding. Ejm: Word2Vec <code>[ 0.21, -0.35, 0.88, -0.04, ..., 0.16 ]</code></p>
+<span class="h">Embeddings contextuales</span>
+<p style="font-size:14px;">La representación de una palabra puede variar según el contexto. Ejm: BERT</p>
+<p style="font-size:13px;margin:.2em 0;">El banco aprobó el crédito para la vivienda. <code>[ 0.42, -0.11, 0.63, ..., 0.08 ]</code></p>
+<p style="font-size:13px;margin:.2em 0;">Nos sentamos en el banco del parque. <code>[ -0.19, 0.55, -0.07, ..., 0.31 ]</code></p>
+<span class="h">Sentence Transformers</span>
+<p style="font-size:14px;">Codificación de fragmentos enteros. "El banco aprobó el crédito para la vivienda." <code>[ 0.27, -0.14, 0.36, ..., 0.19 ]</code></p>
+</div>
+</div>
+</div>
+
+<!-- ============ 27 · PROPIEDADES EMBEDDINGS ============ -->
+## Propiedades de los embeddings {data-kicker="Karen"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill imgcard" style="justify-content:flex-start;"><span class="h" style="align-self:flex-start;">Cercanía semántica</span><img src="img_nlp/slide27_img0.png" style="max-height:350px;max-width:100%;margin-top:8px;"/></div>
+<div class="card fill"><span class="h">Elementos importantes</span>
+<p style="margin:.6em 0 0;"><b style="font-size:15px;">Tamaño ventana de contexto</b><br><span class="muted" style="font-size:13px;">¿Cuántos tokens máximo recibe el modelo?</span></p>
+<p style="margin:.7em 0 0;"><b style="font-size:15px;">Tamaño del vector</b><br><span class="muted" style="font-size:13px;">¿De qué tamaño queda el embedding? Ej: 1024, 2048, etc.</span></p>
+<p style="margin:.7em 0 0;"><b style="font-size:15px;">Idioma de entrenamiento</b><br><span class="muted" style="font-size:13px;">¿En qué idioma o idiomas fue entrenado el modelo?</span></p>
+<p style="margin:.7em 0 0;"><b style="font-size:15px;">Tipo de tarea</b><br><span class="muted" style="font-size:13px;">¿Para qué tarea fue optimizado el modelo? Ej: STS, Retrieval, Clustering.</span></p>
+</div>
+</div>
+
+<!-- ============ 28 · BERTOPIC ============ -->
+## BERTopic {data-kicker="Aplicación de embeddings · Karen"}
+
+<p class="muted" style="font-size:12.5px;font-style:italic;margin:0 0 12px;">"BERTopic is a topic modeling technique that leverages transformers and c-TF-IDF to create dense clusters allowing for easily interpretable topics whilst keeping important words in the topic descriptions." — (Grootendorst, 2022)</p>
+
+<div class="columns" style="height:390px;">
+<div class="column" style="flex:0 0 55%;">
+<div class="stack" style="gap:9px;">
+<div class="card" style="padding:12px 16px;"><div class="numrow"><div class="num">1</div><div><b>Representación vectorial</b><div class="d">Representación vectorial de los textos con embeddings (tipo transformers).</div></div></div></div>
+<div class="card" style="padding:12px 16px;"><div class="numrow"><div class="num">2</div><div><b>Reducción de dimensión</b><div class="d">Ejm: 1024 a 5 componentes por vector. Algoritmo: UMAP.</div></div></div></div>
+<div class="card" style="padding:12px 16px;"><div class="numrow"><div class="num">3</div><div><b>Clustering</b><div class="d">Agrupar los textos por distancia. Algoritmo: HDBSCAN.</div></div></div></div>
+<div class="card" style="padding:12px 16px;"><div class="numrow"><div class="num">4</div><div><b>Representación de tópicos</b><div class="d">Selección de palabras para representar el tópico, comunes que diferencian entre grupos. Algoritmo: c-TF-IDF.</div></div></div></div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card fill imgcard"><img src="img_nlp/slide28_img0.png" style="max-height:340px;max-width:100%;"/></div>
+</div>
+</div>
+
+<!-- ============ 29 · LLMs ============ -->
+## LLMs · Large Language Models {data-kicker="Karen"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill">
+<span class="h">¿Qué es un modelo del lenguaje?</span>
+<p style="font-size:13.5px;">Un sistema que, dado un contexto de palabras previas, asigna una distribución de probabilidad sobre la siguiente palabra.</p>
+<div style="background:#EEF0FB;border-radius:9px;padding:9px 13px;margin:.3em 0;"><code style="font-size:13px;">"El agua del lago Walden es tan hermosamente ___"</code></div>
+<p style="font-size:13px;"><b class="vio">Probable:</b> azul, verde, transparente &nbsp;&nbsp; <b class="vio">Improbable:</b> refrigerador, esto</p>
+<span class="h">¿Qué pueden hacer los LLMs?</span>
+<p style="font-size:13.5px;">Resumir, traducir, responder preguntas, generar código, analizar argumentos.</p>
+</div>
+<div class="card fill">
+<span class="h">Prompting · uso de un LLM</span>
+<p style="font-size:13.5px;">Un prompt es el texto que el usuario entrega al modelo para obtener una respuesta útil. El modelo genera tokens de forma iterativa condicionado en ese texto.</p>
+<p style="font-size:12.5px;"><code>"P: ¿Quién escribió El origen de las especies? R:"</code> → "Charles Darwin"</p>
+<span class="h">Control de aleatoriedad</span>
+<p style="font-size:13px;"><b>Temperatura:</b> reescala las probabilidades (baja = más probable; alta = más diversidad). <b>Top-k:</b> conserva las k más probables. <b>Top-p:</b> conjunto mínimo cuya probabilidad acumulada supera p.</p>
+<p style="font-size:13px;color:#FF5C8A;font-weight:700;"><b>Alucinación:</b> el modelo puede sonar coherente y seguro, pero no corresponder con los hechos reales.</p>
+</div>
+</div>
+
+<!-- ============ 30 · RAG ============ -->
+## RAG · Retrieval Augmented Generation {data-kicker="Karen" .t28}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill">
+<div class="numrow"><div class="num">1</div><div><b>Preparar corpus o documentos</b></div></div>
+<div class="numrow"><div class="num">2</div><div><b>Representación vectorial: embeddings</b></div></div>
+<div class="numrow"><div class="num">3</div><div><b>Vector Store</b><div class="d">Índice semántico para recuperar fragmentos. Ejm: FAISS.</div></div></div>
+<div class="numrow"><div class="num">4</div><div><b>Recuperación de fragmentos relevantes</b><div class="d">Dado un query o pregunta.</div></div></div>
+<div class="numrow"><div class="num">5</div><div><b>LLM</b><div class="d">Uso de los fragmentos como contexto para responder.</div></div></div>
+</div>
+<div class="card-violet fill">
+<span class="h">Chunking o fragmentación</span>
+<p style="font-size:13px;">División del corpus en fragmentos de tamaño manejable. Cada fragmento se convierte en un embedding.</p>
+<span class="h">Similitud semántica</span>
+<p style="font-size:13px;">La pregunta del usuario se convierte en embedding. Se recuperan los fragmentos más cercanos.</p>
+<span class="h">Prompt LLM</span>
+<p style="font-size:13px;">Instrucciones para el modelo: incluyen la pregunta y los fragmentos recuperados, indicando que responda con base en ese contexto.</p>
+<span class="h">Generación aumentada</span>
+<p style="font-size:13px;">El LLM recibe la pregunta junto con los fragmentos recuperados y genera una respuesta fundamentada en ellos.</p>
+</div>
+</div>
+
+<!-- ============ 31 · DIVIDER 04 ============ -->
+## {.dark data-state="dark" data-menu-title="04 · Caso de uso en salud" background-color="#3F2F9E"}
+
+<div class="circle" style="width:430px;height:430px;background:#8E7EE6;bottom:-170px;left:-120px;"></div>
+<div class="circle" style="width:300px;height:300px;background:#8E7EE6;opacity:.55;top:-120px;right:-70px;"></div>
+
+::: {.z}
+<div class="divnum">04</div>
+<div style="font-size:36px;font-weight:800;color:#fff;margin-top:64px;max-width:1050px;">Caso de uso: tweets y aplicación en salud</div>
+<div style="margin-top:20px;"><span class="pill">Andrés</span></div>
+:::
+
+<!-- ============ 32 · MISMA METODOLOGÍA ============ -->
+## La misma metodología, otro dominio {data-kicker="Contexto y metodología · Andrés"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill"><span class="h" style="font-size:18px;">Objetivo</span>
+<ul class="golddot" style="margin-top:8px;">
+<li>Caracterizar cómo se habla de salud en un corpus de tuits en español.</li>
+<li>Identificar actores, instituciones, enfermedades y medicamentos frecuentes.</li>
+<li>Describir la evolución temporal y temática del subcorpus.</li>
+</ul>
+</div>
+<div class="card-violet fill"><span class="h" style="font-size:18px;">Pipeline aplicado</span>
+<div class="numrow"><div class="num">1</div><div style="font-size:14px;">Selección del subcorpus de salud (similitud semántica).</div></div>
+<div class="numrow"><div class="num">2</div><div style="font-size:14px;">Descriptivos: autores, tipo de cuenta, evolución mensual.</div></div>
+<div class="numrow"><div class="num">3</div><div style="font-size:14px;">13 subcategorías temáticas de salud.</div></div>
+<div class="numrow"><div class="num">4</div><div style="font-size:14px;">NER, POS (Stanza) y BERTopic.</div></div>
+<div class="numrow"><div class="num">5</div><div style="font-size:14px;">Búsqueda dirigida: lugares, instituciones, enfermedades, medicamentos.</div></div>
+</div>
+</div>
+
+<!-- ============ 33 · DESCRIPTIVOS ============ -->
+## Descriptivos generales {data-kicker="Salud · Andrés · Resultados"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill imgcard"><img src="img_nlp/slide33_img0.png" style="max-height:330px;max-width:100%;"/><div class="cap">Distribución de autores según nº de tuits sobre salud</div></div>
+<div class="card fill imgcard"><img src="img_nlp/slide33_img1.png" style="max-height:330px;max-width:100%;"/><div class="cap">Porcentaje mensual de tuits que mencionan salud</div></div>
+</div>
+
+<!-- ============ 34 · QUIÉN HABLA ============ -->
+## Quién habla de salud {data-kicker="Salud · Andrés · Resultados"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill imgcard"><img src="img_nlp/slide34_img0.png" style="max-height:340px;max-width:100%;"/><div class="cap">Top autores con más tuits de salud</div></div>
+<div class="card fill imgcard"><img src="img_nlp/slide34_img1.png" style="max-height:350px;max-width:100%;"/><div class="cap">Instituciones de salud más mencionadas</div></div>
+</div>
+
+<!-- ============ 35 · PALABRAS Y POS ============ -->
+## Palabras y categorías gramaticales {data-kicker="Salud · Andrés · Resultados"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill imgcard"><img src="img_nlp/slide35_img0.png" style="max-height:340px;max-width:100%;"/><div class="cap">Nube de palabras (lematizadas, sin stopwords)</div></div>
+<div class="card fill imgcard"><img src="img_nlp/slide35_img1.png" style="max-height:250px;max-width:100%;"/><div class="cap">Top verbos, sustantivos y adjetivos (POS · Stanza)</div></div>
+</div>
+
+<!-- ============ 36 · ENFERMEDADES ============ -->
+## Enfermedades y medicamentos {data-kicker="Salud · Andrés · Resultados"}
+
+<div class="grid2" style="height:452px;">
+<div class="card fill imgcard"><img src="img_nlp/slide36_img0.png" style="max-height:350px;max-width:100%;"/><div class="cap">Enfermedades más mencionadas</div></div>
+<div class="card fill imgcard"><img src="img_nlp/slide36_img1.png" style="max-height:350px;max-width:100%;"/><div class="cap">Medicamentos más mencionados</div></div>
+</div>
+
+<!-- ============ 37 · GRAFO 2020 ============ -->
+## Entidades asociadas a "salud" en 2020 {data-kicker="Salud · Andrés · El año de la pandemia"}
+
+<div class="columns" style="height:452px;">
+<div class="column" style="flex:0 0 61%;">
+<div class="card fill imgcard"><img src="img_nlp/slide37_img0.png" style="max-height:390px;max-width:100%;"/></div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;flex-direction:column;justify-content:center;">
+<h3>Cómo leer el grafo</h3>
+<ul class="golddot">
+<li>Nodo central: la palabra "salud".</li>
+<li>Nodos azules: personas (PER).</li>
+<li>Nodos verdes: organizaciones (ORG).</li>
+<li>Tamaño y grosor = frecuencia de co-ocurrencia.</li>
+</ul>
+</div>
+</div>
+</div>
+
+<!-- ============ 38 · HALLAZGOS ============ -->
+## Hallazgos del caso {data-kicker="Salud · Andrés"}
+
+<div class="grid3" style="height:250px;">
+<div class="card"><span class="cico" style="background:#614AD3;width:44px;height:44px;font-size:20px;">🎯</span><span class="h" style="font-size:17px;margin-top:12px;">Concentración</span><p style="font-size:14px;">La conversación sobre salud se concentra en pocos autores e instituciones.</p></div>
+<div class="card"><span class="cico" style="background:#614AD3;width:44px;height:44px;font-size:20px;">📈</span><span class="h" style="font-size:17px;margin-top:12px;">Estacionalidad</span><p style="font-size:14px;">La actividad varía en el tiempo, con picos ligados a coyunturas de salud pública.</p></div>
+<div class="card"><span class="cico" style="background:#614AD3;width:44px;height:44px;font-size:20px;">🧬</span><span class="h" style="font-size:17px;margin-top:12px;">Diversidad temática</span><p style="font-size:14px;">Cubre muchas subcategorías, enfermedades y medicamentos específicos.</p></div>
+</div>
+
+<div class="card-deep" style="margin-top:16px;"><span class="h">Próximos pasos</span><p style="font-size:14px;">Profundizar tópicos (BERTopic) por subcategoría · comparar salud con comportamientos protectores · explorar la relación entre cobertura mediática y comportamiento.</p></div>
+
+<!-- ============ 39 · DIVIDER 05 ============ -->
+## {.dark data-state="dark" data-menu-title="05 · Práctica guiada" background-color="#3F2F9E"}
+
+<div class="circle" style="width:430px;height:430px;background:#8E7EE6;bottom:-170px;left:-120px;"></div>
+<div class="circle" style="width:300px;height:300px;background:#8E7EE6;opacity:.55;top:-120px;right:-70px;"></div>
+
+::: {.z}
+<div class="divnum">05</div>
+<div style="font-size:36px;font-weight:800;color:#fff;margin-top:70px;max-width:1050px;">Práctica guiada en Python</div>
+<div style="margin-top:20px;"><span class="pill">Equipo</span></div>
+:::
+
+<!-- ============ 40 · MANOS A LA OBRA ============ -->
+## Manos a la obra: todo listo en Google Colab {data-kicker="Práctica · Equipo" .t28}
+
+<div class="columns" style="height:452px;">
+<div class="column" style="flex:0 0 55%;">
+<div class="card fill"><span class="h" style="font-size:18px;">Sin instalar nada</span>
+<div class="iconrow"><span class="isq">✅</span><p>Google Colab con todo preinstalado (sin errores de librerías).</p></div>
+<div class="iconrow"><span class="isq">📦</span><p>Un corpus pequeño: 200 tuits o 200 titulares de prensa.</p></div>
+<div class="iconrow"><span class="isq">⏱️</span><p>No reproducimos todo el pipeline: hacemos una misión guiada.</p></div>
+<div class="iconrow"><span class="isq">🤝</span><p>Trabajamos juntos, paso a paso.</p></div>
+</div>
+</div>
+<div class="column" style="flex:1;">
+<div class="card-violet fill" style="display:flex;flex-direction:column;align-items:center;justify-content:center;">
+<h3 style="text-align:center;">Escanea para abrir el notebook</h3>
+<img src="img_nlp/slide40_img0.png" style="width:210px;height:210px;border-radius:12px;background:#fff;padding:8px;margin:12px auto;"/>
+<p class="soft" style="font-size:12px;text-align:center;">Taller de NLP · PyCon Colombia 2026</p>
+</div>
+</div>
+</div>
+
+<!-- ============ 41 · CIERRE ============ -->
+## {.dark data-state="dark" data-menu-title="Cierre y conversación final" background-color="#3F2F9E"}
+
+<div class="circle" style="width:560px;height:560px;background:#281C66;bottom:-270px;right:-120px;"></div>
+
+<div class="z" style="display:flex;gap:34px;align-items:center;height:600px;">
+<div style="flex:1;">
+<span class="pill">Cierre y conversación final · Biviana</span>
+<p class="lead" style="font-size:33px;color:#fff;margin-top:24px;max-width:640px;">El lenguaje no es solo una columna de strings.</p>
+<p style="font-size:17px;color:#B6BDF0;font-style:italic;max-width:640px;">También es cómo una sociedad argumenta, nombra problemas y construye sentido. Gracias por acompañarnos.</p>
+<p style="font-size:30px;color:#FFC24B;font-weight:800;margin-top:16px;">¡Gracias!</p>
+<div style="display:flex;gap:12px;margin-top:12px;">
+<span class="namechip">Biviana</span><span class="namechip">Dora</span><span class="namechip">Karen</span><span class="namechip">Andrés</span>
+</div>
+</div>
+<div style="flex:0 0 290px;">
+<div class="card center"><span class="h" style="text-align:center;display:block;">Califica el taller</span>
+<img src="img_nlp/slide41_img0.png" style="width:200px;height:200px;margin:12px auto;display:block;"/>
+<p class="cap">Escanea y déjanos tu feedback: nos ayuda a mejorar PyCon Colombia.</p>
+</div>
+</div>
+</div>
